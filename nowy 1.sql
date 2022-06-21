@@ -1,0 +1,39 @@
+CREATE DATABASE SportsClubDatabase;
+
+CREATE TABLE ClubEmployees (EmployeeID INT PRIMARY KEY AUTO_INCREMENT,
+EmployeeName VARCHAR(1000) NOT NULL,
+EmployeeLastName VARCHAR(1000) NOT NULL,
+EmployeeRole VARCHAR(100) NOT NULL,
+EmployeeMonthlySalary VARCHAR(100) NOT NULL,
+EmployeeEmail VARCHAR(1000),
+EmployeeTelephoneNumber VARCHAR(100),
+EmployeeAddres VARCHAR(1000) NOT NULL,
+EmployeePostalCode VARCHAR(100) NOT NULL);
+
+CREATE TABLE ClubMemberships (MembershipID INT PRIMARY KEY AUTO_INCREMENT,
+MembershipDuration VARCHAR(100) NOT NULL,
+MembershipCost VARCHAR(100) NOT NULL);
+
+CREATE TABLE ClubMembers (MemberID INT PRIMARY KEY AUTO_INCREMENT,
+MemberName VARCHAR(1000) NOT NULL,
+MemberLastName VARCHAR(1000) NOT NULL,
+MemberEmail VARCHAR(1000),
+MemberTelephoneNumber VARCHAR(100),
+MemberAddres VARCHAR(1000) NOT NULL,
+MemberPostalCode VARCHAR(1000) NOT NULL);
+
+CREATE TABLE MembershipsHistory (ID INT PRIMARY KEY AUTO_INCREMENT,
+MemberID INT NOT NULL,
+MembershipID INT NOT NULL,
+PurcharseDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+ExpirationDate DATE NOT NULL);
+
+ALTER TABLE MembershipsHistory 
+ADD FOREIGN KEY (MemberID) REFERENCES ClubMembers(MemberID),
+ADD FOREIGN KEY (MembershipID) REFERENCES ClubMemberships(MembershipID);
+
+
+
+
+
+
